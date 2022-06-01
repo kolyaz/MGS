@@ -7,12 +7,12 @@ const apiFun = (json, state) => {
       }
 
       if (json.operation=== 'locationsList') {
-        state.locationsList = json.locationsList;
+        state.locationsList = json.data;
         return true;
       }
 
       if (json.operation=== 'dataList') {
-        state.dataList = json.dataList;
+        state.dataList = json.data;
         return true;
       }
 

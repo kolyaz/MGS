@@ -10,7 +10,7 @@ const state = {
     { Name: "Russia", Id: 3 },
   ],
   token: '',
-  locationList: [],
+  locationsList: [],
   dataList: [
     { "id": 25, "Name": "Otto Clay", "InputLocation": 1, "Status": false, "Comment": '' },
     { "id": 26, "Name": "Otto Clays", "InputLocation": 1, "Status": true, "Comment": '' },

@@ -1,7 +1,8 @@
 const btnEditPress = (state) => {
+  
     $( "#btnEdit" ).on( "click", function() {
         state.socket.send(JSON.stringify({
-          operation: 'getData', 
+          operation: 'getLocations', 
           token: state.token
         }))
       });
