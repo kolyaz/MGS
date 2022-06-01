@@ -1,5 +1,5 @@
 
-const WebSockets = (fun, state) => {
+const webSocketInit = (fun, state) => {
     try {
         state.socket = new WebSocket(`ws://${state.socketLink}:${state.port}`);
         state.socket.onopen = () => {
@@ -7,7 +7,7 @@ const WebSockets = (fun, state) => {
         }
         state.socket.onmessage =  (data) => {
         const getJson = JSON.parse(data.data);
-        fun(getJson);
+        fun(getJson, state);
       };
       return true;
     } catch (error) {
@@ -17,5 +17,5 @@ const WebSockets = (fun, state) => {
     }
   };
   export {
-    WebSockets,
+    webSocketInit,
   };
