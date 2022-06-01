@@ -13,12 +13,6 @@
     <link type="text/css" rel="stylesheet" href="/css/style.css">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.js"></script>
     <title>MGS</title>
-
-    <style>
-
-    </style>
-
-    <!-- Custom styles for this template -->
   </head>
   <body class="bg-light">
 
@@ -41,7 +35,7 @@
                       <option>United Kingdom</option>
                       <option>Russia</option>
                     </select>
-                    <button id=""  class="button btn btn-secondary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Edit</button>
+                    <button id="btnEdit"  class="button btn btn-secondary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Edit</button>
                 </div>
             </div>
               <div class="col-md-7 col-lg-8">
@@ -57,7 +51,6 @@
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                      ...
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -76,9 +69,8 @@
         </div>
 
         <script type="module">
-          import {init, state} from './js/main.js'
-          init();
-          document.getElementById('button').addEventListener('click', () => state.socket.send(JSON.stringify({operation: 'getData', token: state.token})));
+          import {init, state} from './js/main.js';
+          init('btnEdit');
         </script>
   </body>
 

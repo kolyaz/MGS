@@ -1,11 +1,9 @@
-import { state } from "./store.js";
 
-
-const WebSockets = (fun, socketLink, port) => {
+const WebSockets = (fun, state) => {
     try {
-        state.socket = new WebSocket(`ws://${socketLink}:${port}`);
+        state.socket = new WebSocket(`ws://${state.socketLink}:${state.port}`);
         state.socket.onopen = () => {
-            state.socket.send(JSON.stringify({operation: 'getToken'}));
+            // state.socket.send(JSON.stringify({operation: 'getToken'}));
         }
         state.socket.onmessage =  (data) => {
         const getJson = JSON.parse(data.data);
