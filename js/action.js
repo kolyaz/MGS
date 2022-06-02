@@ -12,7 +12,7 @@ const btnAuthPress = (state) => {
     $( "#btnAuth" ).on( "click", function() {
         state.socket.send(JSON.stringify({
           operation: 'getToken', 
-        }))
+        }));
       });
 }
 

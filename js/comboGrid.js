@@ -1,73 +1,50 @@
 const comboGrid= (state)=> {
+    const data = state.locationsList
     $("#comboGrid").jsGrid({
         width: "100%",
-        height: "100%",
+        height: "auto",
         inserting: true,
-        editing: true,
+        editing: false,
         sorting: true,
         paging: true,
-        data: state.locationsList,
+        data,
+
 
         controller: {
-            insertItem:  async function(item) { 
-                console.log(state.locationsList);
-                  const query = await state.socket.send(JSON.stringify({
+            insertItem:   function(item) { 
+                state.socket.send(JSON.stringify({
                     operation: 'addLocation',
                     token: state.token,
                     name:item.name
-                }))
-                return state.locationsList
-                
+                }));
+                return; 
             },
-            loadData: function(filter) {
-                return $.ajax({
-                    type: "GET",
-                    url: "/items",
-                    data: filter
-                });
+
+            deleteItem: function(item) {
+                state.socket.send(JSON.stringify({
+                    operation: 'deleteLocation',
+                    token: state.token,
+                    id:item.id
+                }));
+                return;
             },
-            
-            // insertItem: function(item) {
-            //     console.log(item)
-            //     return $.ajax({
-            //         type: "POST",
-            //         url: "/items",
-            //         data: item
-            //     });
-            // },
-            
+
             // updateItem: function(item) {
-            //     return $.ajax({
-            //         type: "PUT",
-            //         url: "/items",
-            //         data: item
-            //     });
-            // },
-            
-            // deleteItem: function(item) {
-            //     return $.ajax({
-            //         type: "DELETE",
-            //         url: "/items",
-            //         data: item
-            //     });
+            //     state.socket.send(JSON.stringify({
+            //         operation: 'editLocation',
+            //         token: state.token,
+            //         id:item.id
+            //     }));
+            //     return;
             // },
         },
 
         fields: [
             { name: "name", type: "text", width: 100, validate: "required" },
-            { name: "id", type: "text", width: 150 },
-                        // {
-            //     type: "control",
-            //     modeSwitchButton: false,
-            //     editButton: false,
-            //     headerTemplate: function() {
-            //         return $("<button>").attr("type", "button").text("Add")
-            //                 .on("click", function () {
-            //                     showDetailsDialog("Add", {});
-            //                 });
-            //     }
-            // }
-            { type: "control" },
+            { 
+                type: "control",
+                editButton: false,                   
+            },
         ]
     });
 }

@@ -56,3 +56,8 @@
 .hide {
   visibility: hidden;
 }
+
+.modal-locations{
+  height: fit-content;
+  
+}
