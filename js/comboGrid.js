@@ -29,14 +29,6 @@ const comboGrid= (state)=> {
                 return;
             },
 
-            // updateItem: function(item) {
-            //     state.socket.send(JSON.stringify({
-            //         operation: 'editLocation',
-            //         token: state.token,
-            //         id:item.id
-            //     }));
-            //     return;
-            // },
         },
 
         fields: [

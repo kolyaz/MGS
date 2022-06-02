@@ -12,6 +12,7 @@
     <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid-theme.min.css" />
     <link type="text/css" rel="stylesheet" href="/css/style.css">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.js"></script>
+    <script src="./js/notify.js"></script>
     <title>MGS</title>
   </head>
   <body class="bg-light">
@@ -31,14 +32,13 @@
 
                 <div class="input-group">
                     <select class="form-select" id="selectLocation" required="">
-                      <option value=""> ...</option>
                     </select>
                     <button id="btnEdit"  class="button btn btn-secondary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Edit</button>
                 </div>
             </div>
               <div class="col-md-8 col-lg-9">
                   <h4 class="mb-3">Таблица</h4>
-                  <div id="jsGrid"></div>
+                  <div class="disactivatedGgrid" id="jsGrid"></div>
               </div>
               <!-- Modal -->
               <div class="modal fade modal-locations" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">

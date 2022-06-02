@@ -16,9 +16,20 @@ const btnAuthPress = (state) => {
       });
 }
 
+const gridPress = (state) => {
+  $( ".disactivatedGgrid" ).on( "click", function() {
+    console.log
+    if (!state.locationsList.length) {
+      $('#jsGrid').removeClass( "disactivatedGgrid" );
+      $.notify('Выберите  локацию', { position:"top center" });
+    }
+    });
+}
+
 const action = (state) => {
     btnEditPress(state);
     btnAuthPress(state);
+    gridPress(state);
 }
 
 export {
