@@ -11,6 +11,7 @@ import { state } from "./store.js";
 import { action } from "./action.js";
 import { apiFun } from "./apiFun.js";
 import { auth } from "./auth.js";
+import { typeGrid } from "./typeGrid.js";
 
 
 
@@ -25,7 +26,7 @@ const init = () => {
   auth(state);
   webSocketInit(apiFun, state);
   grid(state);
-  comboGrid(state)
+  comboGrid(state);
   action(state);
 }
  export { init, state };

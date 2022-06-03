@@ -1,6 +1,6 @@
 // Главная таблица
 
-
+import { typeGrid } from "./typeGrid.js";
 
 const grid = (state) => {
     const data =  state.dataList;
@@ -92,15 +92,14 @@ const grid = (state) => {
                 editing:false, insertButton: true,modeSwitchButton: false,
 
                 itemTemplate: function (value, item) {
-                    let $text = $("<div>").attr("class", "col-11").text(item.type);
                     let $button = $("<i>")
-                    .attr("class", "col-1 fa-solid fa-pen mr-10")
-                    .attr("data-bs-target", "#staticBackdrop")
+                    .attr("class", " fa-solid fa-pen ")
+                    .attr("data-bs-target", "#staticBackdrop2")
                     .attr("data-bs-toggle","modal")
                         .on("click", function () {
-                            // showDetailsDialog("Add", {});
+                            typeGrid(state, item, value);
                         });
-                    return $("<div>").attr("class", "d-flex").append($text).append($button);
+                    return $("<div>").attr("class", "d-flex ").append($button);
                 }
 
             },
@@ -129,64 +128,6 @@ const load_gridData = () => {
     $("#jsGrid").jsGrid("loadData");// Можно было применить "socket.send", но для разнообразия применил это.
 }
 
-
-// $("#detailsDialog").dialog({
-//     autoOpen: false,
-//     width: 400,
-//     close: function() {
-//         $("#detailsForm").validate().resetForm();
-//         $("#detailsForm").find(".error").removeClass("error");
-//     }
-// });
-
-// $("#detailsForm").validate({
-//     rules: {
-//         name: "required",
-//         age: { required: true, range: [18, 150] },
-//         address: { required: true, minlength: 10 },
-//         country: "required"
-//     },
-//     messages: {
-//         name: "Please enter name",
-//         age: "Please enter valid age",
-//         address: "Please enter address (more than 10 chars)",
-//         country: "Please select country"
-//     },
-//     submitHandler: function() {
-//         formSubmitHandler();
-//     }
-// });
-
-// let formSubmitHandler = $.noop;
-
-// const showDetailsDialog = function(dialogType, client) {
-//     $("#name").val(client.Name);
-//     $("#age").val(client.Age);
-//     $("#address").val(client.Address);
-//     $("#country").val(client.Country);
-//     $("#married").prop("checked", client.Married);
-
-//     formSubmitHandler = function() {
-//         saveClient(client, dialogType === "Add");
-//     };
-
-//     $("#detailsDialog").dialog("option", "title", dialogType + " Client")
-//             .dialog("open");
-// };
-
-// const saveClient = function(client, isNew) {
-//     $.extend(client, {
-//         Name: $("#name").val(),
-//         Age: parseInt($("#age").val(), 10),
-//         Address: $("#address").val(),
-//         Country: parseInt($("#country").val(), 10),
-//         Married: $("#married").is(":checked")
-//     });
-
-//     $("#jsGrid").jsGrid(isNew ? "insertItem" : "updateItem", client);
-
-//     $("#detailsDialog").dialog("close");
-// };
 
 export {
     grid,

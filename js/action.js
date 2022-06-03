@@ -2,9 +2,7 @@
 
 // Реализация нажатия кнопки "Edit"
 const btnEditPress = (state) => {
-  
     $( "#btnEdit" ).on( "click", function() {
-      $("#comboGrid").removeClass( "type" ).addClass( "location" );
         state.socket.send(JSON.stringify({
           operation: 'getLocations', 
           token: state.token

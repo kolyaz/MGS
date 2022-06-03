@@ -1,32 +1,34 @@
-// Combo для выбора локаций
+// Combo для type
 
-const typeGrid= (state)=> {
-    const data = state.locationsList
-    $(".type").jsGrid({
+const typeGrid= (state, items, value)=> {
+    console.log(value)
+    $("#typeGrid").jsGrid({
         width: "100%",
         height: "auto",
         inserting: true,
         editing: false,
         sorting: true,
         paging: true,
-        data,
+        data:value,
 
 
         controller: {
-            insertItem:   function(item) { 
+            insertItem:  function(item) { 
                 state.socket.send(JSON.stringify({
-                    operation: 'addLocation',
+                    operation: 'addType',
                     token: state.token,
-                    name:item.name
+                    name: item.type,
+                    id: items.id,
                 }));
                 return; 
             },
 
             deleteItem: function(item) {
                 state.socket.send(JSON.stringify({
-                    operation: 'deleteLocation',
+                    operation: 'deleteType',
                     token: state.token,
-                    id:item.id
+                    type_id:item.id,
+                    id:items.id,
                 }));
                 return;
             },
@@ -34,13 +36,10 @@ const typeGrid= (state)=> {
         },
 
         fields: [
-            { name: "name", type: "text", width: 100, validate: "required" },
-            { 
-                type: "control",
-                editButton: false,                   
-            },
+            { name: "type", type: "text", width: 100, editing: false },
+            { type: "control", editButton: false, },
         ]
     });
 }
 
-export {comboGrid}
+export { typeGrid }

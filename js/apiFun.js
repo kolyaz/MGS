@@ -50,7 +50,7 @@ const apiFun = (json, state) => {
       }
 
       // addData - Добавляет данные в массив, возвращает статус добавления true/false
-      if (json.operation === 'addData') {
+      if ((json.operation === 'addData') || (json.operation === 'addType') || (json.operation === 'deleteType')) {
         if (json.status) {
           load_gridData();
           return true;
