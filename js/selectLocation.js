@@ -1,3 +1,4 @@
+// Обновление выпадающего списка для "Locations"
 const update_selectLocation = (state) => {
     const locationList = state.locationsList;
     $('#selectLocation').empty();

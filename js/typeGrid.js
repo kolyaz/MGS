@@ -1,8 +1,8 @@
 // Combo для выбора локаций
 
-const comboGrid= (state)=> {
+const typeGrid= (state)=> {
     const data = state.locationsList
-    $("#comboGrid").jsGrid({
+    $(".type").jsGrid({
         width: "100%",
         height: "auto",
         inserting: true,
