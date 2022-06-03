@@ -68,7 +68,7 @@ const grid = (state) => {
                             }));   
                     }
 
-                    if (item.Comment != state.dataList[itemIndex].comment) {
+                    if (item.comment != state.dataList[itemIndex].comment) {
                         state.socket.send(JSON.stringify({
                             operation: 'editComment',
                             token: state.token,
